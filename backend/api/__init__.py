@@ -7,7 +7,7 @@ api_blueprint = Blueprint('api', __name__)
 api = Api(api_blueprint)
 
 # Import namespaces
-from .movies import ns_movies
+from .clients import ns_clients
 
 # Add namespaces to API
-api.add_namespace(ns_movies)
+api.add_namespace(ns_clients)

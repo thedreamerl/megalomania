@@ -1,22 +1,163 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demo</title>
+    <title>Demo DOM.RF / Insurance company</title>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 </head>
 <body>
-    <h1>Hi!!</h1>
 
-    <ul id="movies"></ul>
+<div class="container">
+    <div class="py-5 text-center">
+        <img class=" mx-auto mb-4" alt="" src="https://xn--d1aqf.xn--p1ai/images/logo.svg"
+             width="72" height="72">
 
-    <script>
-        $.get('/api/movies/').then(movies => {
-            movies.forEach(movie => {
-                $('#movies').append(`<li>${movie.name} (${movie.author.fullname})</li>`)
-            });
-        })
-    </script>
+
+        <h2>Форма создания </h2>
+        <p class="lead">Эта форма будет использоваться менеджером страховой компании для занесения информации об
+            отдельном пользователе</p>
+    </div>
+
+    <div class="row">
+
+
+        <div class="col-md-12 order-md-1">
+            <h4 class="mb-3">Данные клиента</h4>
+
+
+            <form id="mainForm" action="handle_data/" method="post" class="needs-validation" novalidate="">
+                <div class="row">
+                    <div class="col mb-4">
+                        <label for="phone">Номер телефона</label>
+
+                        <input type="text" class="form-control" name="phone" id="phone"
+                               value="+79167777777">
+                    </div>
+                </div>
+
+
+                <div class="mb-4">
+                    <label>Уникальный номер договора, который клиент получил в банке</label>
+                    <input type="number" class="form-control" name="contractNumber" id="" placeholder=""
+                           value="1204192821384"
+                           required="">
+                    <hr/>
+                    <div class="row">
+
+                        <div class="col mb-3">
+                            <label>Имя клиента</label>
+                            <input type="text" class="form-control" name="firstName" id="firstName" placeholder=""
+                                   value="Петр"
+                                   required="">
+                            <div class="invalid-feedback">
+                                Valid first name is required.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mb-3">
+                            <label>Фамилия клиента</label>
+                            <input type="text" class="form-control" name="lastName" id="lastName" placeholder=""
+                                   value="Петров"
+                                   required="">
+
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col mb-3">
+                            <label>Отчество клиента</label>
+                            <input type="text" class="form-control" name="patronymic" id="patronymic" placeholder=""
+                                   value="Артемович" required="">
+                            <div class="invalid-feedback">
+                                Введите отчество
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <hr/>
+                    <div class="mb-4 md-4">
+                        <div class="row">
+                            <label>Тип страхования</label></div>
+                        <div class="form-check md-4 mb-3">
+                            <input class="form-check-input" type="radio" name="insurance_type" id="f1" value="1">
+                            <label class="form-check-label" for="f1">
+                                Страхование жилья
+                            </label>
+                        </div>
+
+
+                        <div class="form-check md-4 mb-3">
+                            <input class="form-check-input" type="radio" name="insurance_type" id="f2"
+                                   value="2">
+                            <label class="form-check-label" for="f2">
+                                Страхование здоровья
+                            </label>
+                        </div>
+
+
+                        <div class="form-check md-4 mb-3">
+                            <input class="form-check-input" type="radio" name="insurance_type" id="f3"
+                                   checked value="3">
+                            <label class="form-check-label" for="f3">
+                                Страхование титула
+                            </label>
+
+                        </div>
+
+
+                        <div class="md-3 mb-3">
+                            <label for="startDate">Дата начала страхования</label>
+
+                            <input class="col" type="date" id="startDate" name="startDate"
+                                   value="2021-09-25"
+                                   min="2020-01-01" max="2023-12-31">
+                        </div>
+                        <div class=" md-3 mb-3">
+                            <label for="endDate">Дата конца страхования</label>
+                            <input class="col" type="date" id="endDate" name="endDate"
+                                   value="2022-09-25"
+                                   min="2021-01-01" max="2024-12-31">
+                        </div>
+
+                        <hr class="mb-4">
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">Сделать запись о клиенте</button>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</div>
+<script>
+    $('#mainForm').submit(function(e){
+    e.preventDefault();
+    $.ajax({
+        url: '/handle_data',
+        type: 'post',
+        data:$('#mainForm').serialize(),
+        success:function(data){
+        alert('Поздравляем! Клиенту был присвоен уникальный ключ: ' + data['key']);
+
+        }
+    });
+});
+
+</script>
 </body>
 </html>

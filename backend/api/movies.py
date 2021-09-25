@@ -1,5 +1,5 @@
-from flask_restplus import Namespace, Resource, fields
-from flask_restplus.reqparse import RequestParser
+from flask_restx import Namespace, Resource, fields
+from flask_restx.reqparse import RequestParser
 
 from .helpers import read_movies, add_movie
 

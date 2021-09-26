@@ -130,7 +130,7 @@
     $('#mainForm').submit(function(e){
     e.preventDefault();
     $.ajax({
-        url: '/handle_data_bank',
+        url: '/handle_data_bank/',
         type: 'post',
         data:$('#mainForm').serialize(),
         success:function(data){

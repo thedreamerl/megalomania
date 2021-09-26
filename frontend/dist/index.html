@@ -28,8 +28,8 @@
 
 
         <h2>Форма создания </h2>
-        <p class="lead">Эта форма будет использоваться менеджером страховой компании для занесения информации об
-            отдельном пользователе</p>
+        <p class="lead">Эта форма будет использоваться менеджером страховой компании для занесения информации о
+            заключенном контракте</p>
     </div>
 
     <div class="row">
@@ -119,25 +119,26 @@
                             </label>
 
                         </div>
-
-
-                        <div class="md-3 mb-3">
-                            <label for="startDate">Дата начала страхования</label>
-
-                            <input class="col" type="date" id="startDate" name="startDate"
-                                   value="2021-09-25"
-                                   min="2020-01-01" max="2023-12-31">
-                        </div>
-                        <div class=" md-3 mb-3">
-                            <label for="endDate">Дата конца страхования</label>
-                            <input class="col" type="date" id="endDate" name="endDate"
-                                   value="2022-09-25"
-                                   min="2021-01-01" max="2024-12-31">
-                        </div>
-
-                        <hr class="mb-4">
-                        <button class="btn btn-primary btn-lg btn-block" type="submit">Сделать запись о клиенте</button>
                     </div>
+
+
+                    <div class="md-3 mb-3">
+                        <label for="startDate">Дата начала страхования</label>
+
+                        <input class="col" type="date" id="startDate" name="startDate"
+                               value="2021-09-25"
+                               min="2020-01-01" max="2023-12-31">
+                    </div>
+                    <div class=" md-3 mb-3">
+                        <label for="endDate">Дата конца страхования</label>
+                        <input class="col" type="date" id="endDate" name="endDate"
+                               value="2022-09-25"
+                               min="2021-01-01" max="2024-12-31">
+                    </div>
+
+                    <hr class="mb-4">
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">Сделать запись</button>
+                </div>
             </form>
         </div>
     </div>
@@ -148,15 +149,19 @@
     $('#mainForm').submit(function(e){
     e.preventDefault();
     $.ajax({
-        url: '/handle_data',
+        url: '/handle_data/',
         type: 'post',
         data:$('#mainForm').serialize(),
         success:function(data){
-        alert('Поздравляем! Клиенту был присвоен уникальный ключ: ' + data['key']);
+        if (data['key'] == '-1') alert('Контракт с указанным кодом не был найден в реестре!'); else
+        alert('Поздравляем! Контракт был занесен в систему и был присвоен уникальный ключ: ' + data['key']);
+}
 
-        }
     });
 });
+
+
+
 
 </script>
 </body>

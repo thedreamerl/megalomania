@@ -1,2 +1,14 @@
 [
+  {
+    "phone": "+79167777777",
+    "contractNumber": "1204192821384",
+    "firstName": "\u041f\u0435\u0442\u0440",
+    "lastName": "\u041f\u0435\u0442\u0440\u043e\u0432",
+    "patronymic": "\u0410\u0440\u0442\u0435\u043c\u043e\u0432\u0438\u0447",
+    "insurance_type": "1",
+    "startDate": "2021-09-25",
+    "endDate": "2022-09-25",
+    "key": "ebcb9957-8647-41f8-8222-107f374b8f95",
+    "insurance_key": "a4421025-e1a2-4e63-8b2b-5ac48269d4a8"
+  }
 ]

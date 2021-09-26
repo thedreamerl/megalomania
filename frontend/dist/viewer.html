@@ -32,15 +32,16 @@
             в системе </p>
     </div>
     <div class="row">
-        <div class="md-4">
-            <input class="form-input" type="text" id="bank_num" value="">
+        <div class="col-md-4">
+            <input class="form-control" type="text" id="bank_num" value="1204192821384">
             <button id='checkBankNum' type="button" class="btn btn-success">Проверить номер договора</button>
         </div>
     </div>
     <hr>
     <div class="row">
-        <div class="md-4">
-            <input class="form-input" type="text" id="contract_num" value="">
+        <div class="col-md-4">
+            <input class="form-control" type="text" id="contract_num" value="ebcb9957-8647-41f8-8222-107f374b8f95">
+
             <button id='checkContract' type="button" class="btn btn-success">Проверить контракт</button>
         </div>
     </div>
@@ -68,6 +69,27 @@
     });
 });
 </script>
+<script>
+    $('#checkContract').on('click',
+
+    function(e){
+    e.preventDefault();
+    $.ajax(
+    {
+        url: '/checkContract/',
+        type: 'post',
+
+        data :{value:$('#contract_num').val()},
+        success:function(data){
+        if (data=='True')
+        alert('В реестре был найден такой контракт');
+        else alert('В реестре не был найден такой контракт!');
+    }
+
+    });
+});
+</script>
+
 
 
 

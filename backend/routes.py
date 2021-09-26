@@ -24,6 +24,10 @@ def check_bank_num():
     num = dict(request.form)['value']
     return str(num in [ct['contractNumber'] for ct in helpers_insurance.registry_check()])
 
+@app.route('/checkContract/', methods=['POST'])
+def check_contract():
+    num = dict(request.form)['value']
+    return str(num in [ct['key'] for ct in helpers_insurance.read_contracts()])
 
 # TODO: implement
 @app.route('/bulkLoad/', methods=['GET'])
